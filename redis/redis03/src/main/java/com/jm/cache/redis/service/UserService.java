@@ -3,6 +3,7 @@ package com.jm.cache.redis.service;
 import com.alibaba.fastjson.JSONObject;
 import com.jm.cache.redis.pojo.User;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
@@ -32,6 +33,12 @@ public class UserService {
         String sql = "select * from tb_user_base where uid=?";
         User user = jdbcTemplate.queryForObject(sql, new String[]{userId}, new BeanPropertyRowMapper<>(User.class));
         return user;
+    }
+
+    @CacheEvict(value="user",key="#user.uid")  // 方法执行结束，清除缓存
+    public void updateUser(User user){
+        String sql = "update tb_user_base set uname=? where uid=?";
+        jdbcTemplate.update(sql, new String[]{user.getUname(), user.getUid()});
     }
 
 }

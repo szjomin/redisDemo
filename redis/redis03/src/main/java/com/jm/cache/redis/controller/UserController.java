@@ -23,10 +23,15 @@ public class UserController {
     /**
      * 查看姓名
      */
-    /*@RequestMapping("/findUserNameById")
-    public String findUserNameById(String userId) {
-        return userService.findUserNameById(userId);
-    }*/
+    @RequestMapping("/updateUser")
+    public String updateUser() {
+        User user = new User();
+        user.setUid("1");
+        user.setAge(18);
+        user.setUname("John");
+        userService.updateUser(user);
+        return "success";
+    }
 
 
     @RequestMapping("/getMemoryString")

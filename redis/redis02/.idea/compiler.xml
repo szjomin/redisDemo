@@ -7,6 +7,7 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="redis01" />
+        <module name="redis02" />
       </profile>
     </annotationProcessing>
   </component>

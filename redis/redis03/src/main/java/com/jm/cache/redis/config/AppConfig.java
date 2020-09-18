@@ -5,6 +5,7 @@ import org.springframework.cache.CacheManager;
 import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import org.springframework.data.redis.cache.RedisCache;
 import org.springframework.data.redis.cache.RedisCacheConfiguration;
 import org.springframework.data.redis.cache.RedisCacheManager;
@@ -17,6 +18,8 @@ import org.springframework.validation.annotation.Validated;
 import redis.clients.jedis.JedisPool;
 
 @Configuration //
+@EnableCaching
+@EnableAspectJAutoProxy // 开启AOP自动代理
 public class AppConfig {
 
     @Value("${spring.redis.host}")
@@ -40,6 +43,7 @@ public class AppConfig {
         return redisTemplate;
     }
 
+    @Bean
     public RedisConnectionFactory redisConnectionFactory() {
         RedisStandaloneConfiguration redisStandaloneConfiguration = new RedisStandaloneConfiguration();
         redisStandaloneConfiguration.setHostName(host);
