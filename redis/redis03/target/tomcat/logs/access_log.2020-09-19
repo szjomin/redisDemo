@@ -4,3 +4,4 @@
 0:0:0:0:0:0:0:1 - - [19/Sep/2020:00:24:20 +0800] "GET /redis03/findUserById?userId=1 HTTP/1.1" 500 9650 http-bio-8080-exec-2 575
 0:0:0:0:0:0:0:1 - - [19/Sep/2020:00:26:59 +0800] "GET /redis03/findUserById?userId=1 HTTP/1.1" 200 57 http-bio-8080-exec-1 702
 0:0:0:0:0:0:0:1 - - [19/Sep/2020:00:27:18 +0800] "GET /redis03/updateUser HTTP/1.1" 500 11195 http-bio-8080-exec-3 119
+0:0:0:0:0:0:0:1 - - [19/Sep/2020:00:29:26 +0800] "GET /redis03/updateUser HTTP/1.1" 200 7 http-bio-8080-exec-1 868
