@@ -18,11 +18,16 @@ import redis.clients.jedis.JedisPool;
 @Configuration //
 public class AppConfig {
 
+    @Value("${spring.redis.host}")
+    String host;
+
+    @Value("${spring.redis.port}")
+    int port;
 
     // 创建对象，spring托管 <bean ...
     @Bean
     public JedisPool jedisPool() {
-        JedisPool jedisPool = new JedisPool("localhost", 6379);
+        JedisPool jedisPool = new JedisPool(host, port);
         return jedisPool;
     }
 
